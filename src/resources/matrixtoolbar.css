@@ -1,0 +1,12 @@
+.matrixToolbar {
+    margin: 12px 0 4px;
+}
+
+.matrixToolbar-settings {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.matrixToolbar-settings:before {
+    margin-right: 5px;
+}

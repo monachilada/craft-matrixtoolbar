@@ -1,18 +1,18 @@
 {
-    "name": "monachilada/craft-matrixtoggle",
-    "description": "Simultaneously toggle all blocks in a Matrix field on or off.",
+    "name": "monachilada/craft-matrixtoolbar",
+    "description": "Expand, Collapse and modify the status of multiple blocks in a Matrix field simultaneously.",
     "type": "craft-plugin",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "keywords": [
         "craft",
         "cms",
         "craftcms",
         "craft-plugin",
-        "matrix toggle"
+        "matrix toolbar"
     ],
     "support": {
-        "docs": "https://github.com/monachilada/craft-matrixtoggle/blob/master/README.md",
-        "issues": "https://github.com/monachilada/craft-matrixtoggle/issues"
+        "docs": "https://github.com/monachilada/craft-matrixtoolbar/blob/master/README.md",
+        "issues": "https://github.com/monachilada/craft-matrixtoolbar/issues"
     },
     "license": "MIT",
     "authors": [
@@ -22,19 +22,20 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0-RC1"
+        "craftcms/cms": "^3.0.0-RC1",
+        "ext-json": "^1.5"
     },
     "autoload": {
         "psr-4": {
-          "monachilada\\matrixtoggle\\": "src/"
+          "monachilada\\matrixtoolbar\\": "src/"
         }
     },
     "extra": {
-        "name": "Matrix Toggle",
-        "handle": "matrixtoggle",
+        "name": "Matrix Toolbar",
+        "handle": "matrixtoolbar",
         "hasCpSettings": false,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/monachilada/craft-matrixtoggle/master/CHANGELOG.md",
-        "class": "monachilada\\matrixtoggle\\MatrixToggle"
+        "changelogUrl": "https://raw.githubusercontent.com/monachilada/craft-matrixtoolbar/master/CHANGELOG.md",
+        "class": "monachilada\\matrixtoolbar\\MatrixToolbar"
     }
 }

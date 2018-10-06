@@ -2,28 +2,20 @@
 /**
  * Matrix Toggle plugin for Craft CMS 3.x
  *
- * Simultaneously toggle all blocks in a Matrix field on or off.
+ * Expand, Collapse and modify the status of multiple blocks in a Matrix field simultaneously.
  *
  * @link      https://michaelpierce.trade/
  * @copyright Copyright (c) 2018 Mike Pierce
  */
 
-namespace monachilada\matrixtoggle;
+namespace monachilada\matrixtoolbar;
 
 use Craft;
 use craft\base\Plugin;
+use craft\events\RegisterTemplateRootsEvent;
 use craft\services\Plugins;
-use craft\events\PluginEvent;
-use craft\console\Application as ConsoleApplication;
-use craft\web\UrlManager;
-use craft\services\Elements;
-use craft\services\Fields;
-use craft\services\Utilities;
-use craft\web\twig\variables\CraftVariable;
-use craft\services\Dashboard;
-use craft\events\RegisterComponentTypesEvent;
-use craft\events\RegisterUrlRulesEvent;
 
+use craft\web\View;
 use yii\base\Event;
 
 /**
@@ -37,19 +29,19 @@ use yii\base\Event;
  * https://craftcms.com/docs/plugins/introduction
  *
  * @author    Mike Pierce
- * @package   MatrixToggle
- * @since     1.0.0
+ * @package   MatrixToolbar
+ * @since     1.0.2
  */
-class MatrixToggle extends Plugin
+class MatrixToolbar extends Plugin
 {
     // Static Properties
     // =========================================================================
 
     /**
      * Static property that is an instance of this plugin class so that it can be accessed via
-     * MatrixToggle::$plugin
+     * MatrixToolbar::$plugin
      *
-     * @var MatrixToggle
+     * @var MatrixToolbar
      */
     public static $plugin;
 
@@ -61,14 +53,14 @@ class MatrixToggle extends Plugin
      *
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+    public $schemaVersion = '1.0.2';
 
     // Public Methods
     // =========================================================================
 
     /**
      * Set our $plugin static property to this class so that it can be accessed via
-     * MatrixToggle::$plugin
+     * MatrixToolbar::$plugin
      *
      * Called after the plugin class is instantiated; do any one-time initialization
      * here such as hooks and events.
@@ -82,31 +74,52 @@ class MatrixToggle extends Plugin
         parent::init();
         self::$plugin = $this;
 
-/**
- * Logging in Craft involves using one of the following methods:
- *
- * Craft::trace(): record a message to trace how a piece of code runs. This is mainly for development use.
- * Craft::info(): record a message that conveys some useful information.
- * Craft::warning(): record a warning message that indicates something unexpected has happened.
- * Craft::error(): record a fatal error that should be investigated as soon as possible.
- *
- * Unless `devMode` is on, only Craft::warning() & Craft::error() will log to `craft/storage/logs/web.log`
- *
- * It's recommended that you pass in the magic constant `__METHOD__` as the second parameter, which sets
- * the category to the method (prefixed with the fully qualified class name) where the constant appears.
- *
- * To enable the Yii debug toolbar, go to your user account in the AdminCP and check the
- * [] Show the debug toolbar on the front end & [] Show the debug toolbar on the Control Panel
- *
- * http://www.yiiframework.com/doc-2.0/guide-runtime-logging.html
- */
         Craft::info(
             Craft::t(
-                'matrixtoggle',
+                'matrixtoolbar',
                 '{name} plugin loaded',
                 ['name' => $this->name]
             ),
             __METHOD__
         );
+
+        $request = Craft::$app->getRequest();
+
+        if (!$request->getIsCpRequest() || $request->getIsConsoleRequest()) {
+            return false;
+        }
+
+        Event::on(
+            View::class,
+            View::EVENT_REGISTER_CP_TEMPLATE_ROOTS,
+            function(RegisterTemplateRootsEvent $event) {
+                $event->roots['matrixtoolbar'] = __DIR__ . '/templates';
+            }
+        );
+
+        Event::on(
+            Plugins::class,
+            Plugins::EVENT_AFTER_LOAD_PLUGINS,
+            function () {
+                $allFields = Craft::$app->getFields()->getAllFields();
+
+                foreach ($allFields as $field)
+                {
+                    if($field::displayName() === 'Matrix') {
+                        $fields[$field->handle] = array(
+                            'id' => $field->id,
+                            'handle' => $field->handle,
+                        );
+                    }
+                }
+
+                Craft::$app->getView()->registerAssetBundle(MatrixToolbarBundle::class);
+                Craft::$app->getView()->registerJs('Craft.MatrixToolbarPlugin.init('.json_encode($fields).');');
+            }
+        );
+
+        Craft::$app->view->hook('cp.entries.edit.content', function(array &$context) {
+            return Craft::$app->getView()->renderTemplate('matrixtoolbar/matrixtoolbar');
+        });
     }
 }

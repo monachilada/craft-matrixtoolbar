@@ -1,6 +1,6 @@
-# Matrix Toggle plugin for Craft CMS 3.x
+# Matrix Toolbar plugin for Craft CMS 3.x
 
-Simultaneously toggle all blocks in a Matrix field on or off.
+Expand, Collapse and modify the status of multiple blocks in a Matrix field simultaneously.
 
 ![Screenshot](resources/img/plugin-logo.png)
 
@@ -18,26 +18,26 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require monachilada/craft-matrixtoggle
+        composer require monachilada/craft-matrixtoolbar
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Matrix Toggle.
 
-## Matrix Toggle Overview
+## Matrix Toolbar Overview
 
 -Insert text here-
 
-## Configuring Matrix Toggle
+## Configuring Matrix Toolbar
 
 -Insert text here-
 
-## Using Matrix Toggle
+## Using Matrix Toolbar
 
 -Insert text here-
 
-## Matrix Toggle Roadmap
+## Matrix Toolbar Roadmap
 
 Some things to do, and ideas for potential features:
 
-* Release it
+* Add a search field to the toolbar, so that blocks with fields that have matching results can be highlighted.
 
 Brought to you by [Mike Pierce](https://michaelpierce.trade/)
