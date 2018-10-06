@@ -10,14 +10,6 @@
 
 namespace monachilada\matrixtoggle;
 
-use monachilada\matrixtoggle\services\MatrixToggleService as MatrixToggleServiceService;
-use monachilada\matrixtoggle\variables\MatrixToggleVariable;
-use monachilada\matrixtoggle\twigextensions\MatrixToggleTwigExtension;
-use monachilada\matrixtoggle\models\Settings;
-use monachilada\matrixtoggle\fields\MatrixToggleField as MatrixToggleFieldField;
-use monachilada\matrixtoggle\utilities\MatrixToggleUtility as MatrixToggleUtilityUtility;
-use monachilada\matrixtoggle\widgets\MatrixToggleWidget as MatrixToggleWidgetWidget;
-
 use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
@@ -47,10 +39,6 @@ use yii\base\Event;
  * @author    Mike Pierce
  * @package   MatrixToggle
  * @since     1.0.0
- *
- * @property  MatrixToggleServiceService $matrixToggleService
- * @property  Settings $settings
- * @method    Settings getSettings()
  */
 class MatrixToggle extends Plugin
 {
@@ -94,89 +82,6 @@ class MatrixToggle extends Plugin
         parent::init();
         self::$plugin = $this;
 
-        // Add in our Twig extensions
-        Craft::$app->view->registerTwigExtension(new MatrixToggleTwigExtension());
-
-        // Add in our console commands
-        if (Craft::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = 'monachilada\matrixtoggle\console\controllers';
-        }
-
-        // Register our site routes
-        Event::on(
-            UrlManager::class,
-            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
-            function (RegisterUrlRulesEvent $event) {
-                $event->rules['siteActionTrigger1'] = 'matrix-toggle/default';
-            }
-        );
-
-        // Register our CP routes
-        Event::on(
-            UrlManager::class,
-            UrlManager::EVENT_REGISTER_CP_URL_RULES,
-            function (RegisterUrlRulesEvent $event) {
-                $event->rules['cpActionTrigger1'] = 'matrix-toggle/default/do-something';
-            }
-        );
-
-        // Register our elements
-        Event::on(
-            Elements::class,
-            Elements::EVENT_REGISTER_ELEMENT_TYPES,
-            function (RegisterComponentTypesEvent $event) {
-            }
-        );
-
-        // Register our fields
-        Event::on(
-            Fields::class,
-            Fields::EVENT_REGISTER_FIELD_TYPES,
-            function (RegisterComponentTypesEvent $event) {
-                $event->types[] = MatrixToggleFieldField::class;
-            }
-        );
-
-        // Register our utilities
-        Event::on(
-            Utilities::class,
-            Utilities::EVENT_REGISTER_UTILITY_TYPES,
-            function (RegisterComponentTypesEvent $event) {
-                $event->types[] = MatrixToggleUtilityUtility::class;
-            }
-        );
-
-        // Register our widgets
-        Event::on(
-            Dashboard::class,
-            Dashboard::EVENT_REGISTER_WIDGET_TYPES,
-            function (RegisterComponentTypesEvent $event) {
-                $event->types[] = MatrixToggleWidgetWidget::class;
-            }
-        );
-
-        // Register our variables
-        Event::on(
-            CraftVariable::class,
-            CraftVariable::EVENT_INIT,
-            function (Event $event) {
-                /** @var CraftVariable $variable */
-                $variable = $event->sender;
-                $variable->set('matrixToggle', MatrixToggleVariable::class);
-            }
-        );
-
-        // Do something after we're installed
-        Event::on(
-            Plugins::class,
-            Plugins::EVENT_AFTER_INSTALL_PLUGIN,
-            function (PluginEvent $event) {
-                if ($event->plugin === $this) {
-                    // We were just installed
-                }
-            }
-        );
-
 /**
  * Logging in Craft involves using one of the following methods:
  *
@@ -197,40 +102,11 @@ class MatrixToggle extends Plugin
  */
         Craft::info(
             Craft::t(
-                'matrix-toggle',
+                'matrixtoggle',
                 '{name} plugin loaded',
                 ['name' => $this->name]
             ),
             __METHOD__
-        );
-    }
-
-    // Protected Methods
-    // =========================================================================
-
-    /**
-     * Creates and returns the model used to store the plugin’s settings.
-     *
-     * @return \craft\base\Model|null
-     */
-    protected function createSettingsModel()
-    {
-        return new Settings();
-    }
-
-    /**
-     * Returns the rendered settings HTML, which will be inserted into the content
-     * block on the settings page.
-     *
-     * @return string The rendered settings HTML
-     */
-    protected function settingsHtml(): string
-    {
-        return Craft::$app->view->renderTemplate(
-            'matrix-toggle/settings',
-            [
-                'settings' => $this->getSettings()
-            ]
         );
     }
 }
