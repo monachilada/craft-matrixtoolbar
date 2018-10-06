@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Matrix Toggle plugin for Craft CMS 3.x
+ *
+ * Matrix Toggle Settings.twig
+ *
+ * @author    Mike Pierce
+ * @copyright Copyright (c) 2018 Mike Pierce
+ * @link      https://michaelpierce.trade/
+ * @package   MatrixToggle
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("monachilada\\matrixtoggle\\assetbundles\\matrixtoggle\\MatrixToggleAsset") %}
+
+{{ forms.textField({
+    label: 'Some Field',
+    instructions: 'Enter some setting here.',
+    id: 'someAttribute',
+    name: 'someAttribute',
+    value: settings['someAttribute']})
+}}

@@ -1,0 +1,24 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Matrix Toggle plugin for Craft CMS
+ *
+ * MatrixToggleUtility Utility Content
+ *
+ * @author    Mike Pierce
+ * @copyright Copyright (c) 2018 Mike Pierce
+ * @link      https://michaelpierce.trade/
+ * @package   MatrixToggle
+ * @since     1.0.0
+ */
+#}
+
+<h1>MatrixToggleUtility</h1>
+
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@monachilada/matrixtoggle/assetbundles/matrixtoggleutilityutility/dist', true) ~ '/img/MatrixToggleUtility-icon.svg' %}
+
+<img src="{{ iconUrl }}" height="64" width="64" />
+
+<p>Your Utility content goes here</p>
+
+<p>{{ someVar }}</p>
