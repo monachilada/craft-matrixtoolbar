@@ -1,5 +1,5 @@
 {
-    "name": "monachilada/matrix-toggle",
+    "name": "monachilada/craft-matrixtoggle",
     "description": "Simultaneously toggle all blocks in a Matrix field on or off.",
     "type": "craft-plugin",
     "version": "1.0.0",
@@ -11,8 +11,8 @@
         "matrix toggle"
     ],
     "support": {
-        "docs": "https://github.com/monachilada/matrix-toggle/blob/master/README.md",
-        "issues": "https://github.com/monachilada/matrix-toggle/issues"
+        "docs": "https://github.com/monachilada/craft-matrixtoggle/blob/master/README.md",
+        "issues": "https://github.com/monachilada/craft-matrixtoggle/issues"
     },
     "license": "MIT",
     "authors": [
@@ -31,10 +31,10 @@
     },
     "extra": {
         "name": "Matrix Toggle",
-        "handle": "matrix-toggle",
+        "handle": "matrixtoggle",
         "hasCpSettings": true,
         "hasCpSection": true,
-        "changelogUrl": "https://raw.githubusercontent.com/monachilada/matrix-toggle/master/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/monachilada/craft-matrixtoggle/master/CHANGELOG.md",
         "components": {
             "matrixToggleService": "monachilada\\matrixtoggle\\services\\MatrixToggleService"
         },
