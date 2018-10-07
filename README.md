@@ -1,8 +1,8 @@
 # Matrix Toolbar plugin for Craft CMS 3.x
 
-Expand, Collapse and modify the status of multiple blocks in a Matrix field simultaneously.
+Expand, collapse, change the status of, or delete multiple blocks in a Matrix field simultaneously.
 
-![Screenshot](resources/img/plugin-logo.png)
+![Screenshot](resources/header.png)
 
 ## Requirements
 
@@ -24,20 +24,17 @@ To install the plugin, follow these instructions.
 
 ## Matrix Toolbar Overview
 
--Insert text here-
-
-## Configuring Matrix Toolbar
-
--Insert text here-
+Matrix fields are great, but working with multiple blocks at a time can sometimes be finicky and the in-built features aren't always intuitive to content editors. This plugin adds a toolbar above every Matrix field to more easily expose tools for selecting, collapsing, expanding, changing the status and deleting multiple Matrix blocks simultaneously.
 
 ## Using Matrix Toolbar
 
--Insert text here-
+The toolbar will appear above Matrix fields and should feel pretty familiar from the Entries page and other areas of the Control Panel.
 
 ## Matrix Toolbar Roadmap
 
 Some things to do, and ideas for potential features:
 
+* Better handling of when new blocks are added or deleted from a Matrix field.
 * Add a search field to the toolbar, so that blocks with fields that have matching results can be highlighted.
 
 Brought to you by [Mike Pierce](https://michaelpierce.trade/)

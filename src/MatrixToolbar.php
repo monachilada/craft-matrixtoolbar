@@ -30,7 +30,7 @@ use yii\base\Event;
  *
  * @author    Mike Pierce
  * @package   MatrixToolbar
- * @since     1.0.2
+ * @since     1.0.0
  */
 class MatrixToolbar extends Plugin
 {
