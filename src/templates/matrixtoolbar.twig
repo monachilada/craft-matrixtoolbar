@@ -1,29 +1,48 @@
 {% from "_includes/forms" import text -%}
 <div class="flex matrixToolbar">
 	<div class="selectallcontainer">
-		<div class="btn" role="checkbox" tabindex="-1" aria-checked="false">
-			<div class="checkbox" title="{{ 'Select'|t('app') }}"></div>
+		<div class="btn" role="checkbox" tabindex="1" aria-checked="false">
+			<div class="checkbox matrixToolbar-checkbox" title="{{ 'Select'|t('app') }}"></div>
 		</div>
 	</div>
 	<div>
 		<div class="btn icon matrixToolbar-settings" data-icon="settings" data-icon-after="downangle" title="{{ "Visbility"|t('app') }}"></div>
 		<div class="menu matrixToolbar-menu">
-			<ul class="padded">
-				<li><a data-icon="collapse" data-action="collapse" role="option" tabindex="-1"> <span class="all">{{ "Collapse all"|t('matrixtoolbar') }}</span><span class="selected hidden">{{ "Collapse selected"|t('matrixtoolbar') }}</span></a></li>
-				<li><a data-icon="expand" data-action="expand" role="option" tabindex="-1"> <span class="all">{{ "Expand all"|t('matrixtoolbar') }}</span><span class="selected hidden">{{ "Expand selected"|t('matrixtoolbar') }}</span></a></li>
+			<ul class="padded matrixToolbar-untoggle">
+				<li>
+					<a data-icon="collapse" data-action="collapseAll" role="option" tabindex="-1">
+						{{ "Collapse all"|t('matrixtoolbar') }}					</a>
+				</li>
+				<li>
+					<a data-icon="expand" data-action="expandAll" role="option" tabindex="-1">
+						{{ "Expand all"|t('matrixtoolbar') }}
+					</a>
+				</li>
 			</ul>
-			<hr class="padded hidden">
-			<ul class="padded hidden">
+			<ul class="padded matrixToolbar-toggle hidden">
+				<li>
+					<a data-icon="collapse" data-action="collapse" role="option" tabindex="-1">
+						{{ "Collapse selected"|t('matrixtoolbar') }}
+					</a>
+				</li>
+				<li>
+					<a data-icon="expand" data-action="expand" role="option" tabindex="-1">
+						{{ "Expand selected"|t('matrixtoolbar') }}
+					</a>
+				</li>
+			</ul>
+			<hr class="padded matrixToolbar-toggle hidden">
+			<ul class="padded matrixToolbar-toggle hidden">
 				<li><a class="error" data-icon="remove" data-action="delete" role="option" tabindex="-1">{{ "Delete selected"|t('matrixtoolbar') }}</a></li>
 			</ul>
 		</div>
 	</div>
-	<div class="-hidden">
+	<div class="matrixToolbar-toggle hidden">
 		<div class="btn matrixToolbar-status" data-icon-after="downangle">{{ "Set status"|t('app') }}</div>
 		<div class="menu matrixToolbar-menu">
 			<ul>
-				<li><a data-param="status" data-value="enabled"><span class="status enabled"></span>{{ "Enabled"|t('app') }}</a></li>
-				<li><a data-param="status" data-value="disabled"><span class="status off"></span>{{ "Disabled"|t('app') }}</a></li>
+				<li><a data-action="enable" role="option" tabindex="-1"><span class="status enabled"></span>{{ "Enable"|t('app') }}</a></li>
+				<li><a data-action="disable" role="option" tabindex="-1"><span class="status off"></span>{{ "Disable"|t('app') }}</a></li>
 			</ul>
 		</div>
 	</div>
