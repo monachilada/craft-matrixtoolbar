@@ -20,12 +20,12 @@
                 $status = $('.matrixToolbar-status:first', $toolbar);
                 
                 $field.attr('data-matrixToolbar', true);
-								$toolbar.data('matrixToolbar-blocks', $blocks);
-								
+                $toolbar.data('matrixToolbar-blocks', $blocks);
+
                 $checkbox = $('.matrixToolbar-checkbox:first', $toolbar).data('matrixToolbar', $toolbar);
                 $settings = $('.matrixToolbar-settings:first', $toolbar).data('matrixToolbar', $toolbar);
                 $status = $('.matrixToolbar-status:first', $toolbar).data('matrixToolbar', $toolbar);
-								
+
                 $toolbar.$checkbox = $checkbox;
                 $toolbar.settings = $settings.menubtn().data('menubtn').menu;
                 $toolbar.status = $status.menubtn().data('menubtn').menu;
@@ -43,8 +43,8 @@
         },
         initMatrixEvents: function() {
             Garnish.$doc
-            	.on('click', '.matrixblock', this._handleSelectedChanged.bind(this))
-            	.on('click', '.matrix .buttons .btn[data-type]', this._handleBlockAdded.bind(this));
+                .on('click', '.matrixblock', this._handleSelectedChanged.bind(this))
+                .on('click', '.matrix .buttons .btn[data-type]', this._handleBlockAdded.bind(this));
         },
         getFieldContextSelector: function () {
             if (this.isLivePreview) {
@@ -54,8 +54,8 @@
         },
         _handleSelectedChanged: function(ev) {
             var $matrix = $(ev.currentTarget).parents('.matrix'),
-            		$blocks = $('.blocks', $matrix),
-		            select = $blocks.data('select'),
+                $blocks = $('.blocks', $matrix),
+                select = $blocks.data('select'),
                 container = select.$container,
                 $toolbar = container.data('matrixToolbar-toolbar'),
                 $checkbox = $toolbar.$checkbox;
@@ -64,8 +64,8 @@
         },
         _handleBlockAdded: function(ev) {
             var $matrix = $(ev.currentTarget).parents('.matrix'),
-            		$blocks = $('.blocks', $matrix),
-		            select = $blocks.data('select'),
+                $blocks = $('.blocks', $matrix),
+                select = $blocks.data('select'),
                 container = select.$container,
                 $toolbar = container.data('matrixToolbar-toolbar'),
                 $checkbox = $toolbar.$checkbox;
@@ -98,8 +98,8 @@
             $untoggle.toggleClass('hidden', (select.getTotalSelected() > 0));
         },
         _handleSettingChange: function(ev) {
-	        	var $toolbar = ev.target.$anchor.data('matrixToolbar'),
-		            $checkbox = $toolbar.$checkbox,
+            var $toolbar = ev.target.$anchor.data('matrixToolbar'),
+                $checkbox = $toolbar.$checkbox,
                 $option = $(ev.selectedOption),
                 action = $option.data('action');
                 $blocks = $toolbar.data('matrixToolbar-blocks'),
@@ -109,33 +109,30 @@
                 after = function() {};
             
             if(action == 'collapseAll') {
-	            select.selectAll();
-	            target = 'a[role="option"][data-action="collapse"]',
-	            after = function() {
-		            select.deselectAll();
-	            }
+                select.selectAll();
+                target = 'a[role="option"][data-action="collapse"]',
+                after = function() { select.deselectAll(); };
             } else if(action == 'expandAll') {
-	            select.selectAll();
-	            target = 'a[role="option"][data-action="expand"]',
-	            after = function() {
-		            select.deselectAll();
-	            }
+                select.selectAll();
+                target = 'a[role="option"][data-action="expand"]',
+                after = function() { select.deselectAll(); }
             } else if(action == 'collapse') {
-	            target = 'a[role="option"][data-action="collapse"]';
+                target = 'a[role="option"][data-action="collapse"]';
             } else if(action == 'expand') {
-	            target = 'a[role="option"][data-action="expand"]';
+                target = 'a[role="option"][data-action="expand"]';
             } else if(action == 'delete') {
-	            target = 'a[role="option"][data-action="delete"]',
-	            $selectedItems = select.$selectedItems.first();
+                target = 'a[role="option"][data-action="delete"]',
+                $selectedItems = select.$selectedItems.first();
             }
             
             $selectedItems = ($selectedItems.length)? $selectedItems: select.$selectedItems;
             
             $selectedItems.each(function() {
-	            var $item = $(this),
-	            		$actionMenu = $item.data('block').$actionMenu,
-	            		$action = $(target, $actionMenu);
-	            		$action.trigger('click');
+                var $item = $(this),
+                    $actionMenu = $item.data('block').$actionMenu,
+                    $action = $(target, $actionMenu);
+
+                $action.trigger('click');
             });
             
             after();
@@ -143,7 +140,7 @@
         },
         _handleStatusChange: function(ev) {
             var $toolbar = ev.target.$anchor.data('matrixToolbar'),
-		            $checkbox = $toolbar.$checkbox,
+                $checkbox = $toolbar.$checkbox,
                 $option = $(ev.selectedOption),
                 action = $option.data('action');
                 $blocks = $toolbar.data('matrixToolbar-blocks'),
@@ -152,16 +149,17 @@
                 target = '';
             
             if(action == 'enable') {
-	            target = 'a[role="option"][data-action="enable"]';
+                target = 'a[role="option"][data-action="enable"]';
             } else if(action == 'disable') {
-	            target = 'a[role="option"][data-action="disable"]';
+                target = 'a[role="option"][data-action="disable"]';
             }
             
             $selectedItems.each(function() {
-	            var $item = $(this),
-	            		$actionMenu = $item.data('block').$actionMenu,
-	            		$action = $(target, $actionMenu);
-	            		$action.trigger('click');
+                var $item = $(this),
+                    $actionMenu = $item.data('block').$actionMenu,
+                    $action = $(target, $actionMenu);
+
+                $action.trigger('click');
             });
             
             $checkbox.trigger('checkboxchange');

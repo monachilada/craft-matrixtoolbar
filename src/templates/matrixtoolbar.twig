@@ -1,57 +1,72 @@
 {% from "_includes/forms" import text -%}
 <div class="flex matrixToolbar">
-	<div class="selectallcontainer">
-		<div class="btn" role="checkbox" tabindex="1" aria-checked="false">
-			<div class="checkbox matrixToolbar-checkbox" title="{{ 'Select'|t('app') }}"></div>
-		</div>
-	</div>
-	<div>
-		<div class="btn icon matrixToolbar-settings" data-icon="settings" data-icon-after="downangle" title="{{ "Visbility"|t('app') }}"></div>
-		<div class="menu matrixToolbar-menu">
-			<ul class="padded matrixToolbar-untoggle">
-				<li>
-					<a data-icon="collapse" data-action="collapseAll" role="option" tabindex="-1">
-						{{ "Collapse all"|t('matrixtoolbar') }}					</a>
-				</li>
-				<li>
-					<a data-icon="expand" data-action="expandAll" role="option" tabindex="-1">
-						{{ "Expand all"|t('matrixtoolbar') }}
-					</a>
-				</li>
-			</ul>
-			<ul class="padded matrixToolbar-toggle hidden">
-				<li>
-					<a data-icon="collapse" data-action="collapse" role="option" tabindex="-1">
-						{{ "Collapse selected"|t('matrixtoolbar') }}
-					</a>
-				</li>
-				<li>
-					<a data-icon="expand" data-action="expand" role="option" tabindex="-1">
-						{{ "Expand selected"|t('matrixtoolbar') }}
-					</a>
-				</li>
-			</ul>
-			<hr class="padded matrixToolbar-toggle hidden">
-			<ul class="padded matrixToolbar-toggle hidden">
-				<li><a class="error" data-icon="remove" data-action="delete" role="option" tabindex="-1">{{ "Delete selected"|t('matrixtoolbar') }}</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="matrixToolbar-toggle hidden">
-		<div class="btn matrixToolbar-status" data-icon-after="downangle">{{ "Set status"|t('app') }}</div>
-		<div class="menu matrixToolbar-menu">
-			<ul>
-				<li><a data-action="enable" role="option" tabindex="-1"><span class="status enabled"></span>{{ "Enable"|t('app') }}</a></li>
-				<li><a data-action="disable" role="option" tabindex="-1"><span class="status off"></span>{{ "Disable"|t('app') }}</a></li>
-			</ul>
-		</div>
-	</div>
-	<!-- TODO: Put a search bar in here to highlight blocks with matching fields. -->
-	<!--div class="texticon search icon clearable">
-		{{ text({
-			placeholder: "Search"|t('app')
-		}) }}
-		<div class="clear hidden" title="{{ 'Clear'|t('app') }}"></div>
-	</div>
-	<div class="spinner invisible"></div-->
+    <div class="selectallcontainer">
+        <div class="btn" role="checkbox" tabindex="1" aria-checked="false">
+            <div class="checkbox matrixToolbar-checkbox"
+                 title="{{ 'Select'|t('app') }}"></div>
+        </div>
+    </div>
+    <div>
+        <div class="btn icon matrixToolbar-settings" data-icon="settings"
+             data-icon-after="downangle"
+             title="{{ "Visbility"|t('app') }}"></div>
+        <div class="menu matrixToolbar-menu">
+            <ul class="padded matrixToolbar-untoggle">
+                <li>
+                    <a data-icon="collapse" data-action="collapseAll"
+                       role="option" tabindex="-1">
+                        {{ "Collapse all"|t('matrixtoolbar') }}                    </a>
+                </li>
+                <li>
+                    <a data-icon="expand" data-action="expandAll" role="option"
+                       tabindex="-1">
+                        {{ "Expand all"|t('matrixtoolbar') }}
+                    </a>
+                </li>
+            </ul>
+            <ul class="padded matrixToolbar-toggle hidden">
+                <li>
+                    <a data-icon="collapse" data-action="collapse" role="option"
+                       tabindex="-1">
+                        {{ "Collapse selected"|t('matrixtoolbar') }}
+                    </a>
+                </li>
+                <li>
+                    <a data-icon="expand" data-action="expand" role="option"
+                       tabindex="-1">
+                        {{ "Expand selected"|t('matrixtoolbar') }}
+                    </a>
+                </li>
+            </ul>
+            <hr class="padded matrixToolbar-toggle hidden">
+            <ul class="padded matrixToolbar-toggle hidden">
+                <li><a class="error" data-icon="remove" data-action="delete"
+                       role="option"
+                       tabindex="-1">{{ "Delete selected"|t('matrixtoolbar') }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="matrixToolbar-toggle hidden">
+        <div class="btn matrixToolbar-status"
+             data-icon-after="downangle">{{ "Set status"|t('app') }}</div>
+        <div class="menu matrixToolbar-menu">
+            <ul>
+                <li><a data-action="enable" role="option" tabindex="-1"><span
+                                class="status enabled"></span>{{ "Enable"|t('app') }}
+                    </a></li>
+                <li><a data-action="disable" role="option" tabindex="-1"><span
+                                class="status off"></span>{{ "Disable"|t('app') }}
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- TODO: Put a search bar in here to highlight blocks with matching fields. -->
+    <!--div class="texticon search icon clearable">
+        {{ text({
+            placeholder: "Search"|t('app')
+        }) }}
+        <div class="clear hidden" title="{{ 'Clear'|t('app') }}"></div>
+    </div>
+    <div class="spinner invisible"></div-->
 </div>

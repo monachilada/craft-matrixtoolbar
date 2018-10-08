@@ -53,7 +53,7 @@ class MatrixToolbar extends Plugin
      *
      * @var string
      */
-    public $schemaVersion = '1.0.1';
+    public $schemaVersion = '1.0.2';
 
     // Public Methods
     // =========================================================================
@@ -77,7 +77,7 @@ class MatrixToolbar extends Plugin
         Craft::info(
             Craft::t(
                 'matrixtoolbar',
-                '{name} plugin loaded',
+                'Matrix Toolbar plugin loaded',
                 ['name' => $this->name]
             ),
             __METHOD__
@@ -106,7 +106,7 @@ class MatrixToolbar extends Plugin
             }
         );
 
-        Craft::$app->view->hook('cp.entries.edit.content', function(array &$context) {
+        Craft::$app->view->hook('cp.entries.edit.content', function() {
             return Craft::$app->getView()->renderTemplate('matrixtoolbar/matrixtoolbar');
         });
     }

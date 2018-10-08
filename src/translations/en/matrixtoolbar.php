@@ -22,4 +22,10 @@
  */
 return [
     'Matrix Toolbar plugin loaded' => 'Matrix Toolbar plugin loaded',
+    'Collapse selected' => 'Collapse selected',
+    'Collapse all' => 'Collapse all',
+    'Delete selected' => 'Delete selected',
+    'Expand selected' => 'Expand selected',
+    '{name} plugin loaded' => '{name} plugin loaded',
+    'Expand all' => 'Expand all'
 ];
