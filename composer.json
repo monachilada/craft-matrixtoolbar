@@ -2,7 +2,7 @@
     "name": "monachilada/craft-matrixtoolbar",
     "description": "Expand, collapse, change the status of, or delete multiple blocks in a Matrix field simulta",
     "type": "craft-plugin",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "keywords": [
         "craft",
         "cms",
@@ -37,8 +37,5 @@
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/monachilada/craft-matrixtoolbar/master/CHANGELOG.md",
         "class": "monachilada\\matrixtoolbar\\MatrixToolbar"
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-master"
     }
 }
