@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## 1.0.5 - 2018-10-08
 ### Changed
-- Fixes a javascript error that would prevent Matrix fields in global sets to break.
+- Fixes a javascript error that would prevent Matrix fields in global sets to break. [#2](https://github.com/monachilada/craft-matrixtoolbar/issues/2)
 
 ## 1.0.4 - 2018-10-08
 ### Changed
