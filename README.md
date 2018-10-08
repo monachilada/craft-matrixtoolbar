@@ -34,6 +34,7 @@ The toolbar will appear above Matrix fields and should feel pretty familiar from
 
 Some things to do, and ideas for potential features:
 
+* Make the toolbar work for Matrix fields inside global sets.
 * Better handling of when new blocks are added or deleted from a Matrix field.
 * Add a search field to the toolbar, so that blocks with fields that have matching results can be highlighted.
 

@@ -10,36 +10,38 @@
                 $target = $(this.getFieldContextSelector()),
                 $matrixFields = $('.field[data-type$="Matrix"]:not([data-matrixToolbar])', $target),
                 $matrixToolbar = $('.matrixToolbar:last');;
-
-            $matrixFields.each(function() {
-                var $field = $(this),
-                $toolbar = $matrixToolbar.clone(true),
-                $blocks = $('.input:first .matrix .blocks', $field),
-                $checkbox = $('.matrixToolbar-checkbox:first', $toolbar),
-                $settings = $('.matrixToolbar-settings:first', $toolbar),
-                $status = $('.matrixToolbar-status:first', $toolbar);
+						
+            if($matrixToolbar.length) {
+                $matrixFields.each(function() {
+                    var $field = $(this),
+                        $toolbar = $matrixToolbar.clone(true),
+                        $blocks = $('.input:first .matrix .blocks', $field),
+                        $checkbox = $('.matrixToolbar-checkbox:first', $toolbar),
+                        $settings = $('.matrixToolbar-settings:first', $toolbar),
+                        $status = $('.matrixToolbar-status:first', $toolbar);
+                    
+                    $field.attr('data-matrixToolbar', true);
+                    $toolbar.data('matrixToolbar-blocks', $blocks);
+                    
+                    $checkbox = $('.matrixToolbar-checkbox:first', $toolbar).data('matrixToolbar', $toolbar);
+                    $settings = $('.matrixToolbar-settings:first', $toolbar).data('matrixToolbar', $toolbar);
+                    $status = $('.matrixToolbar-status:first', $toolbar).data('matrixToolbar', $toolbar);
+                    
+                    $toolbar.$checkbox = $checkbox;
+                    $toolbar.settings = $settings.menubtn().data('menubtn').menu;
+                    $toolbar.status = $status.menubtn().data('menubtn').menu;
+                    
+                    $toolbar.$checkbox.on('click', $.proxy(self, '_handleCheckboxClick'));
+                    $toolbar.$checkbox.on('checkboxchange', $.proxy(self, '_handleCheckboxChange'));
+                    $toolbar.settings.on('optionselect', $.proxy(self, '_handleSettingChange'));
+                    $toolbar.status.on('optionselect', $.proxy(self, '_handleStatusChange'));
+                    
+                    $blocks.data('matrixToolbar-toolbar', $toolbar).before($toolbar);
+                });
                 
-                $field.attr('data-matrixToolbar', true);
-                $toolbar.data('matrixToolbar-blocks', $blocks);
-
-                $checkbox = $('.matrixToolbar-checkbox:first', $toolbar).data('matrixToolbar', $toolbar);
-                $settings = $('.matrixToolbar-settings:first', $toolbar).data('matrixToolbar', $toolbar);
-                $status = $('.matrixToolbar-status:first', $toolbar).data('matrixToolbar', $toolbar);
-
-                $toolbar.$checkbox = $checkbox;
-                $toolbar.settings = $settings.menubtn().data('menubtn').menu;
-                $toolbar.status = $status.menubtn().data('menubtn').menu;
-
-                $toolbar.$checkbox.on('click', $.proxy(self, '_handleCheckboxClick'));
-                $toolbar.$checkbox.on('checkboxchange', $.proxy(self, '_handleCheckboxChange'));
-                $toolbar.settings.on('optionselect', $.proxy(self, '_handleSettingChange'));
-                $toolbar.status.on('optionselect', $.proxy(self, '_handleStatusChange'));
-
-                $blocks.data('matrixToolbar-toolbar', $toolbar).before($toolbar);
-            });
-
-            self.initMatrixEvents();
-            $matrixToolbar.remove();
+                self.initMatrixEvents();
+                $matrixToolbar.remove();
+            }
         },
         initMatrixEvents: function() {
             Garnish.$doc
