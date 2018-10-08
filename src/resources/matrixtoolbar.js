@@ -5,8 +5,7 @@
     }
 
     Craft.MatrixToolbarPlugin = {
-        init: function (data) {
-            this.data = data;
+        init: function () {
             var self = this,
                 $target = $(this.getFieldContextSelector()),
                 $matrixFields = $('.field[data-type$="Matrix"]:not([data-matrixToolbar])', $target),

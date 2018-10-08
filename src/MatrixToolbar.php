@@ -53,7 +53,7 @@ class MatrixToolbar extends Plugin
      *
      * @var string
      */
-    public $schemaVersion = '1.0.2';
+    public $schemaVersion = '1.0.1';
 
     // Public Methods
     // =========================================================================
@@ -101,20 +101,8 @@ class MatrixToolbar extends Plugin
             Plugins::class,
             Plugins::EVENT_AFTER_LOAD_PLUGINS,
             function () {
-                $allFields = Craft::$app->getFields()->getAllFields();
-
-                foreach ($allFields as $field)
-                {
-                    if($field::displayName() === 'Matrix') {
-                        $fields[$field->handle] = array(
-                            'id' => $field->id,
-                            'handle' => $field->handle,
-                        );
-                    }
-                }
-
                 Craft::$app->getView()->registerAssetBundle(MatrixToolbarBundle::class);
-                Craft::$app->getView()->registerJs('Craft.MatrixToolbarPlugin.init('.json_encode($fields).');');
+                Craft::$app->getView()->registerJs('Craft.MatrixToolbarPlugin.init();');
             }
         );
 
