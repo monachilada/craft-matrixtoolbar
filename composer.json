@@ -2,7 +2,7 @@
     "name": "monachilada/craft-matrixtoolbar",
     "description": "Expand, collapse, change the status of, or delete multiple blocks in a Matrix field simultaneously.",
     "type": "craft-plugin",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "keywords": [
         "craft",
         "cms",
@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-      "craftcms/cms": "^3.0.0-RC1"
+      "craftcms/cms": "^3.0.27"
     },
     "autoload": {
         "psr-4": {

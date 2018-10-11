@@ -109,5 +109,9 @@ class MatrixToolbar extends Plugin
         Craft::$app->view->hook('cp.entries.edit.content', function() {
             return Craft::$app->getView()->renderTemplate('matrixtoolbar/matrixtoolbar');
         });
+        
+        Craft::$app->view->hook('cp.globals.edit.content', function() {
+            return Craft::$app->getView()->renderTemplate('matrixtoolbar/matrixtoolbar');
+        });
     }
 }

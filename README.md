@@ -6,7 +6,7 @@ Expand, collapse, change the status of, or delete multiple blocks in a Matrix fi
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.0.27 or later.
 
 ## Installation
 
