@@ -112,18 +112,18 @@
             
             if(action == 'collapseAll') {
                 select.selectAll();
-                target = 'a[role="option"][data-action="collapse"]',
+                target = 'a[data-action="collapse"]',
                 after = function() { select.deselectAll(); };
             } else if(action == 'expandAll') {
                 select.selectAll();
-                target = 'a[role="option"][data-action="expand"]',
+                target = 'a[data-action="expand"]',
                 after = function() { select.deselectAll(); }
             } else if(action == 'collapse') {
-                target = 'a[role="option"][data-action="collapse"]';
+                target = 'a[data-action="collapse"]';
             } else if(action == 'expand') {
-                target = 'a[role="option"][data-action="expand"]';
+                target = 'a[data-action="expand"]';
             } else if(action == 'delete') {
-                target = 'a[role="option"][data-action="delete"]',
+                target = 'a[data-action="delete"]',
                 $selectedItems = select.$selectedItems.first();
             }
             
@@ -151,9 +151,9 @@
                 target = '';
             
             if(action == 'enable') {
-                target = 'a[role="option"][data-action="enable"]';
+                target = 'a[data-action="enable"]';
             } else if(action == 'disable') {
-                target = 'a[role="option"][data-action="disable"]';
+                target = 'a[data-action="disable"]';
             }
             
             $selectedItems.each(function() {
